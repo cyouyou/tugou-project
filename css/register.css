@@ -1,0 +1,155 @@
+ * {
+ 	margin: 0;
+ 	padding: 0;
+ }
+ 
+ .area {
+ 	margin: 20px auto 0px auto;
+ }
+ 
+ body {
+ 	background: #ffffff;
+ }
+ 
+ .mui-content {
+ 	background: #ffffff;
+ }
+ 
+ .mui-input-group:first-child {
+ 	margin-top: -94px;
+ }
+ 
+ .mui-input-group label {
+ 	width: 22%;
+ }
+ 
+ .mui-input-row {
+ 	position: relative;
+ 	top: 10px;
+ }
+ 
+ .mui-input-row label~input,
+ .mui-input-row label~select,
+ .mui-input-row label~textarea {
+ 	width: 78%;
+ 	position: absolute;
+ 	left: 12px;
+ }
+ 
+ .mui-checkbox input[type=checkbox],
+ .mui-radio input[type=radio] {
+ 	top: 6px;
+ }
+ 
+ .mui-content-padded {
+ 	margin-top: 25px;
+ }
+ 
+ .mui-btn {
+ 	padding: 10px;
+ }
+ 
+ #enter{
+ 	border-radius: 30px;
+ 	background: rgb(71, 56, 43);
+ 	border: 1px solid rgb(71, 56, 43);
+ 	margin-top: 10px;
+ }
+ 
+ #register {
+ 	background: rgb(71, 56, 43);
+ 	color: #ffffff;
+ 	width: 100%;
+ }
+ 
+ #register span {
+ 	margin-right: 20%;
+ }
+ 
+ #return {
+ 	background: rgb(71, 56, 43);
+ 	color: #FFFFFF;
+ }
+ 
+ #header-img {
+ 	margin: 20px auto;
+ 	border-radius: 15px;
+ }
+ 
+ #footer p {
+ 	color: #424242;
+ 	font-size: 15px;
+ 	margin-left: 40%;
+ 	margin-top: 30px;
+ }
+ 
+ li {
+ 	list-style: none;
+ }
+ 
+ .flex-container {
+ 	display: -webkit-box;
+ 	display: -webkit-flex;
+ 	display: flex;
+ 	-webkit-flex-flow: row wrap;
+ 	justify-content: space-between;
+ 	text-align: center;
+ }
+ 
+ .mui-content-padded {
+ 	padding: 10px;
+ }
+ 
+ .mui-content-padded a .mui-icon {
+ 	margin-top: 12px;
+ }
+ 
+ .mui-spinner,
+ .mui-spinner-white {
+ 	margin-top: 12px
+ }
+ 
+ .active .mui-spinner-indicator {
+ 	background: #007AFF;
+ }
+ 
+ .mui-content a {
+ 	color: #8F8F94;
+ }
+ 
+ .mui-content a.active {
+ 	color: #007aff;
+ }
+ 
+ .mui-input-group .mui-input-row {
+ 	height: 50px;
+ }
+ 
+ .mui-input-row {
+ 	position: relative;
+ 	top: 0;
+ }
+ 
+ .ui-page-login,
+ body {
+ 	height: 0;
+ }
+ #btn{
+ 	margin-top: 2vw;
+ 	margin-left: 20vw;
+ }
+.mui-table-view{
+	padding-bottom: 2vw;
+}
+.mui-btn{
+	padding: 2vw;
+}
+#mui-input-btn{
+	margin-left: 73vw;
+	margin-top: 5vw;
+}
+
+
+
+
+

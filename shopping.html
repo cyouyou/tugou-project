@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta name="viewport" content="user-scalable=no" />
+		<link rel="stylesheet" href="./css/mui.min.css">
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body,html{
+				width: 100%;
+				
+				height: 100%;
+			}
+			#gou_c{
+				width: 100%;
+				height: 91.01%;
+				background: #ffffcc;
+				position: relative;
+				top: 8.9887%;
+			}
+			#gou_c ul{
+				width: 100%;
+				height: 100%;
+				
+				text-align: center;
+			}
+			#gou_c li{
+				/*w700h240*/
+				display: block;
+				list-style: none;
+				width: 93.3333%;
+				height: 20.1646%;
+				background: white;
+				/*margin: 2.057% 2.057% 0 2.057%;*/
+				margin-top: 2.057%;
+				margin-left: 3%;
+				position: relative;
+			}
+			#gou_c li .puttur1{
+				position: absolute;
+				top: 76.363%;
+				width: 14.4927%;
+				height: 13.636%;
+				left: 81.159%;
+				border: 1px solid silver;
+				text-align: center;
+				/*line-height: 30px;*/
+				border-radius: 10px;
+			}
+			#gou_c li .puttur1 button{
+				height: 100%;
+				width: 30.3333%;
+				border: 0;
+				line-height: 10px;
+				font-size: 25px;
+			}
+			#gou_c li .puttur1 input{
+				height: 100%;
+				width: 33.3333%;
+				border: 0;
+				font-size: 25px;
+			}
+			.GoodsCheck{
+				position: absolute;
+				left: 4.2857%;
+				top: 41.66667%;
+				
+			}
+			
+			
+			
+			
+			
+			.gou_c_tu4{
+				position: absolute;
+				width: 28.571%;
+				height: 83.3333%;
+				background: yellow;
+				top: 8.3333%;
+				left: 9.2857%;
+			}
+			.gou_c_p4{
+				font-size: 35px;
+				color: black;
+				position: absolute;
+				top: 12.5%;
+				left: 47.1248%;
+			}
+			.gou_c_span4{
+				font-size: 25px;
+				color: #ccc;
+				position: absolute;
+				top: 29.1667%;
+				left: 47.1248%;
+			}
+			#gou_c li .pptr1{
+				font-size: 35px;
+				color: red;
+				position: absolute;
+				top: 81.25%;
+				left: 47.1248%;
+			}
+			#gou_c li img{
+				position: absolute;
+				width: 28.571%;
+				height: 83.3333%;
+				top: 8.3333%;
+				left: 7.142%;
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			.shop-total{
+				width: 100%;
+				height: 7.1161%;
+				background: black;
+				opacity: 0.5;
+				position: absolute;
+				top: 92.8838%;
+			}
+			.shop-total input{
+				position: absolute;
+				left: 3.7333%;
+				top: 40%;
+			}
+			.shop-total b{
+				position: absolute;
+				color: white;
+				font-size: 30px;
+				top: 40%;
+				left: 10%;
+			}
+			.shop-total #gou_f_jie1{
+				color: white;
+				font-size: 35px;
+				position: absolute;
+				top: 40%;
+				left: 33.333%;
+			}
+			#gou_f_jie{
+				height: 100%;
+				width: 26.66667%;
+				background: red;
+				opacity: 1;
+				position: absolute;
+				left: 73.3333%;
+				text-align: center;
+				line-height: 100px;
+				font-size: 35px;
+			}
+			#gou_f_jie span{
+				font-size: 20px;
+			}
+			.mui-bar-nav{
+			  background-color: rgb(69,56,44);
+			  height: 100px;
+			}
+			.mui-bar-nav a{
+			  color: white;			  
+			}
+			.mui-bar .mui-icon{
+			font-size: 40px;
+			  padding-top: 30px;
+			}
+			.mui-bar-nav .mui-title{
+			  color: white;
+			  font-weight: normal;
+			  font-size: 40px;
+			  line-height: 100px;
+			}
+		</style>
+	</head>
+	<body style="background: #ffffcc;">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">购物车</h1>
+		</header>
+		<div id="gou_c">
+			<ul class="one-shop" id="list">
+				
+				
+				 <div class="shop-total" style="position: fixed;bottom: 0px;z-index: 5;">
+ 
+       				 <input type="checkbox" class="goods-check ShopCheck">
+       				 <b>全选</b>
+      			<p id="gou_f_jie1">合计：￥<span class="shop-total-amount ShopTotal">0</span></p>			
+      			<p id="gou_f_jie">
+					去结算
+					<span id="gou_f_shu3">(0)</span>
+				</p>
+    				</div>
+			</ul>
+		</div>
+	</body>
+	<script src="./js/mui.min.js"></script>
+	<script src="./js/mui.lazyload.js"></script>
+	<script src="./js/mui.lazyload.img.js"></script>
+	<script src="./js/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+  mui.init();
+		var createFragment = function(count) {
+			var fragment = document.createDocumentFragment();
+			var li;
+			for (var i = 0; i < count; i++) {
+				li = document.createElement('li');
+				li.className = 'mui-table-view-cell mui-media';
+				li.className="one-goods";
+				li.innerHTML = '<a><img class="mui-media-object mui-pull-left" data-lazyload="./img/goutu' + (i  + 1) + '.png?version=' + Math.random() * 1000 + '"><input type="checkbox" class="goods-check GoodsCheck"><p class="puttur1"><button type="button" class="minus">-</button><input type="text" class="am-num-text" value="1" /><button type="button" class="plus">+</button></p><p class="pptr1">￥<span class="shop-total-amount GoodsPrice">15.80</span></p><p class="gou_c_p4">精选本地柿子椒500g</p><span class="gou_c_span4">它可以防治坏血病</span></a>';
+				fragment.appendChild(li);
+			}
+			return fragment;
+		};
+		var list = document.getElementById("list");
+		(function($) {
+			
+			list.appendChild(createFragment(5));
+			$(document).imageLazyload({
+				placeholder: ''
+//				../images/60x60.gif
+			});
+		})(mui);
+//		$list=$("#list");
+		 $gou_c_p4=$(".gou_c_p4");
+		 $gou_c_span4=$(".gou_c_span4");
+		 $imgase=$(".mui-media-object");
+		 $jia=$(".GoodsPrice");
+//		 $list_li=$("#list li");
+         	$.ajax({
+         		url:'api/ajax.json',
+         		type:"GET",
+         		dataType:"json",
+         		success:function(msg){
+					console.log(msg.ajax_q);
+					var index = 0;
+					for (var i=0;i<msg.ajax_q.length;i++) {
+						var img = new Image();
+						img.src = msg.ajax_q[i].picSrc;
+						img.onload = function(){//下载完成后触发
+							index++;
+							if(index==msg.ajax_q.length){
+								for(var i=0;i<msg.ajax_q.length;i++){
+		         			 	$gou_c_p4.eq(i).text(msg.ajax_q[i].name);
+		         				$gou_c_span4.eq(i).text(msg.ajax_q[i].xing);
+		         				$jia.eq(i).text(msg.ajax_q[i].jia);
+		         				$imgase.eq(i).attr("src",msg.ajax_q[i].picSrc);
+		         			 	}
+							}
+						}
+						
+						
+						
+					}
+					
+					
+					
+  
+         			
+         		}
+         	})
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  // 数量减
+  $(".minus").click(function() {
+    var t = $(this).parent().find('.am-num-text');
+    t.val(parseInt(t.val()) - 1);
+    if (t.val() <= 1) {
+      t.val(1);
+    }
+    TotalPrice();
+//  console.log(t);
+  });
+  // 数量加
+  $(".plus").click(function() {
+    var t = $(this).parent().find('.am-num-text');
+    t.val(parseInt(t.val()) + 1);
+    if (t.val() <= 1) {
+      t.val(1);
+    }
+    TotalPrice();
+//  console.log(t)
+  });
+  // 点击商品按钮
+  $(".GoodsCheck").click(function() {
+    var goods = $(this).closest(".one-shop").find(".GoodsCheck"); //获取本店铺的所有商品
+    var goodsC = $(this).closest(".one-shop").find(".GoodsCheck:checked"); //获取本店铺所有被选中的商品
+    var Shops = $(this).closest(".one-shop").find(".ShopCheck"); //获取本店铺的全选按钮
+    if (goods.length == goodsC.length) { //如果选中的商品等于所有商品
+      Shops.prop('checked', true); //店铺全选按钮被选中
+      if ($(".ShopCheck").length == $(".ShopCheck:checked").length) { //如果店铺被选中的数量等于所有店铺的数量
+        $("#AllCheck").prop('checked', true); //全选按钮被选中
+        TotalPrice();
+      } else {
+        $("#AllCheck").prop('checked', false); //else全选按钮不被选中 
+        TotalPrice();
+      }
+    } else { //如果选中的商品不等于所有商品
+      Shops.prop('checked', false); //店铺全选按钮不被选中
+      $("#AllCheck").prop('checked', false); //全选按钮也不被选中
+      // 计算
+      TotalPrice();
+      // 计算
+    }
+  });
+ $(".ShopCheck").change(function() {
+    if ($(this).prop("checked") == true) { //如果店铺按钮被选中
+      $(this).parents(".one-shop").find(".goods-check").prop('checked', true); //店铺内的所有商品按钮也被选中
+      if ($(".ShopCheck").length == $(".ShopCheck:checked").length) { //如果店铺被选中的数量等于所有店铺的数量
+        $("#AllCheck").prop('checked', true); //全选按钮被选中
+        TotalPrice();
+      } else {
+        $("#AllCheck").prop('checked', false); //else全选按钮不被选中
+        TotalPrice();
+      }
+    } else { //如果店铺按钮不被选中
+      $(this).parents(".one-shop").find(".goods-check").prop('checked', false); //店铺内的所有商品也不被全选
+      $("#AllCheck").prop('checked', false); //全选按钮也不被选中
+      TotalPrice();
+    }
+});
+  // 点击全选按钮
+//$("#AllCheck").click(function() {
+//  if ($(this).prop("checked") == true) { //如果全选按钮被选中
+//    $(".goods-check").prop('checked', true); //所有按钮都被选中
+//    TotalPrice();
+//  } else {
+//    $(".goods-check").prop('checked', false); //else所有按钮不全选
+//    TotalPrice();
+//  }
+//  $(".ShopCheck").change(); //执行店铺全选的操作
+//});
+
+  function TotalPrice() {
+    var allprice = 0; //总价
+    $(".one-shop").each(function() { //循环每个店铺
+      var oprice = 0; //店铺总价
+      var opricarr=0;
+      $(this).find(".GoodsCheck").each(function() { //循环店铺里面的商品
+        if ($(this).is(":checked")) { //如果该商品被选中
+          var num = parseInt($(this).parents(".one-goods").find(".am-num-text").val()); //得到商品的数量
+          var price = parseFloat($(this).parents(".one-goods").find(".GoodsPrice").text()); //得到商品的单价
+          var total = price * num; //计算单个商品的总价
+//        console.log(num);
+          opricarr1=num;
+          opricarr+=opricarr1;
+          oprice += total; //计算该店铺的总价
+//        console.log(opricarr);
+//     	console.log(oprice);
+			 $("#gou_f_shu3").text(opricarr);
+			
+        }else{
+//      		 var num = parseInt($(this).parents(".one-goods").find(".am-num-text").val()); //得到商品的数量
+//	          opricarr1=num;
+//	          $("#gou_f_shu3").text()=$("#gou_f_shu3").text()-opricarr;
+//			console.log(opricarr);
+//			var opricarr2+= opricarr2-opricarr1;
+//			$("#gou_f_shu3").html()=$("#gou_f_shu3").html()-$(this).parents(".one-goods").find(".am-num-text").val();
+//			console.log($("#gou_f_shu3").html());
+        }
+        
+//      console.log(opricarr);
+        $(this).closest(".one-shop").find(".ShopTotal").text(oprice.toFixed(2)); //显示被选中商品的店铺总价
+      });
+      var oneprice = parseFloat($(this).find(".ShopTotal").text()); //得到每个店铺的总价
+      allprice += oneprice; //计算所有店铺的总价
+    });
+    $("#AllTotal").text(allprice.toFixed(2)); //输出全部总价
+   
+  }
+  </script>
+</html>

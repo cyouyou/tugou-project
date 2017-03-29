@@ -1,0 +1,299 @@
+.title{
+	margin: 20px 15px 10px;
+	color: #6d6d72;
+	font-size: 15px;
+}
+.oa-contact-cell .mui-table .mui-table-cell {
+	padding: 11px 0;
+	vertical-align: middle;
+}
+
+.oa-contact-cell {
+	position: relative;
+	margin: -11px 0;
+}
+
+.oa-contact-avatar {
+	width: 75px;
+}
+.oa-contact-avatar img {
+	border-radius: 50%;
+}
+.oa-contact-content {
+	width: 100%;
+}
+.oa-contact-name {
+	margin-right: 20px;
+}
+.oa-contact-name, oa-contact-position {
+	float: left;
+}
+
+.mui-bar-tab,.mui-bar-nav{
+	background-color: rgb(69,56,44);
+	color: white;
+}
+#header{
+	text-align: center;
+}
+#header .header-text{
+	padding-top: 10px;
+	color: white;
+}
+.mui-table-view .mui-media{
+	outline: none;
+}
+#tabbar-with-mine .item-icon{
+	margin-top: 15px;
+	margin-bottom: 0;
+}
+#tabbar-with-mine .item-border{
+	padding-bottom: 0;
+}
+#tabbar-with-contact .mui-table-view-cell:after{
+	height: 0;
+}
+#tabbar .mui-table-view-cell:after{
+	height: 0;
+}
+#tabbar-with-chat .mui-table-view-cell:after{
+	height: 0;
+}
+#tabbar-with-map .mui-table-view-cell:after{
+	height: 0;
+}
+#tabbar-with-contact .content-card p{
+	text-align: center;
+	padding:3px 0 3px 0;
+}
+#tabbar-with-contact .content-card{
+	padding: 0 5px 0 5px;
+}
+#showCityPicker{
+	font-size: 12px;
+}
+#tabbar-with-mine .mui-table-view-cell:after{
+	right: 17px;
+}
+#header{
+	height: 45px;
+}
+#header input[type=search]{
+	height: 30px;
+	margin: 7px 0;
+	background-color: rgb(63,50,45);
+}
+#header .mui-search .mui-placeholder{
+	line-height: 45px;
+	font-size: 14px;
+}
+#bar-tab .mui-active{
+	color: rgb(107,181,65);
+}
+#slider .mui-slider-group img{
+	height: 250px;
+} 
+#tabbar-bg{
+	height: 250px;
+	background-image: url('../img/bg.png');
+	background-size:100% 250px;
+	text-align: center;
+	color: white;
+}
+#tabbar-bg strong{
+	font-weight: lighter;
+	padding-left: 10px;
+}
+
+#tabbar-bg img{
+	width: 100px;
+	border-radius: 50px;
+	margin-top: 20px;
+}
+#tabbar-bg p{
+	color: white;
+	font-size: 16px;
+}
+.head-up div:nth-child(1){
+	float: left;
+	width: 50%;
+	border-right:1px solid white;
+}
+.head-up div:nth-child(2){
+	float: right;
+	width: 50%
+}
+.head-down div:nth-child(1){
+	float: left;
+	width: 33.33%;
+	margin-top: 10px;
+	border-right:1px solid white;
+}
+.head-down div:nth-child(2){
+	float: left;
+	width: 33.33%;
+	margin-top: 10px;
+	border-right:1px solid white;
+}
+.head-down div:nth-child(3){
+	float: left;
+	width: 33.33%;
+	margin-top: 10px;
+}
+.head-up{
+	font-size: 12px;
+	margin-top: 10px;
+}
+.head-down{
+	font-size: 12px;
+}
+#table-lazy .lazy-pic li,ul{
+	list-style: none;
+	padding: 2px 0 2px 0;
+	margin: 0;
+}
+#table-lazy .lpl{
+	width: 50%;
+	float: left;
+}
+#table-lazy .lpr{
+	width: 50%;
+	float: right;
+}
+#table-lazy .lazy-pic img{
+	width: 95%;
+	height: 100px;
+}
+#table-lazy p{
+	font-size: 16px;
+	color: rgb(74,120,48);
+}
+#table-lazy .lazy-pic{
+	font-size: 14px;
+}
+#table-lazy .more-pic .more-left img{
+	width: 100%;
+	height: 200px;
+}
+#table-lazy .more-pic .more-wrap{
+	padding-top: 10px;
+}
+#table-lazy .more-pic .more-left{
+	width: 35%;
+	float: left;
+}
+#table-lazy .more-pic .more-right{
+	width: 65%;
+	float: right;
+}
+#table-lazy .more-pic .more-up img{
+	width: 100%;
+	height: 100px;
+}
+#table-lazy .more-pic .inner-left{
+	width: 50%;
+	float: left;
+}
+#table-lazy .more-pic .inner-right{
+	width: 50%;
+	float: right;
+}
+#table-lazy .more-pic .more-down img{
+	width: 100%;
+	height: 100px;
+}
+#table-lazy .more-pic .more-up{
+	height: 100px;
+}
+#list,#list li{
+	padding: 0;
+	margin: 0;
+}
+.lazy-list .mui-table-view:before{
+	height: 0;
+}
+.lazy-list .mui-table-view:after{
+	height: 0;
+}
+#list li{
+	padding: 10px 0;
+}
+#tabbar-with-chat .shop-left{
+	width: 50%;
+	float: left;
+	height: 280px;
+}
+#tabbar-with-chat .shop-right{
+	width: 50%;
+	float: right;
+	height: 280px;
+}
+#shop-list{
+	text-align: center;
+}
+#shop-list img{
+	width: 95%;
+	height: 250px;
+}
+#shop-list .mui-table-view-cell{
+	padding-right: 5px;
+}
+#tabbar-with-map .find-pic img{
+	width: 100%;
+	height: 200px;
+}
+#tabbar-with-map .find-pic{
+	height: 200px;
+}
+#tabbar-with-contact .content-card{
+	padding: 10px;
+}
+#my-select .content-card{
+	padding: 10px;
+}
+#tabbar-with-contact .content-card img{
+	width:100%;
+	border-radius: 5px;
+	box-shadow: 1px 1px 10px gray;
+}
+#my-select .content-card img{
+	width:100%;
+	border-radius: 5px;
+	box-shadow: 1px 1px 10px gray;
+}
+#tabbar-with-contact .select-list{
+	height: 140px;
+	overflow: hidden;	
+	background: rgb(208,209,203);
+}
+#tabbar-with-contact{
+	position: relative;
+}
+#tabbar-with-contact .select-veget{
+	width: 25%;
+	display: inline-block;
+	padding: 8px 8px;
+}
+#tabbar-with-contact .select-list img{
+	width: 100%;
+}
+
+#tabbar-with-contact .check-food{
+	width: 25%;
+	height: 140px;
+	float: right;
+	font-size: 14px;
+	text-align: center;
+	position: absolute;
+	right: 0;
+	background: rgb(228,230,220);
+	box-shadow: 1px 1px 10px gray;
+}
+#tabbar-with-contact .check-food span{
+	display: block;
+	margin-top: 40px;
+	margin-bottom: 10px;
+}
+#tabbar-with-contact .mui-table-view{
+	background: rgb(234,235,229);
+}

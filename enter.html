@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<meta charset="utf-8">
+<meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+<title></title>
+<link href="css/mui.min.css" rel="stylesheet" />
+<link href="css/style.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="" />
+<link rel="stylesheet" type="text/css" href="css/enter.css" />	
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" id="return" href="index.html"></a>
+		<h1 class="mui-title" id="register"><span>登录</span></h1>
+	</header>
+
+	<div class="mui-content">
+		<div class="mui-content-padded">
+			<ul class="mui-table-view mui-grid-view item-icon">
+				<li class="mui-table-view-cell mui-media mui-col-xs-12 mui-col-sm-12">
+					<img src="img/headerImg.png" id="header-img" />
+				</li>
+			</ul>
+		</div>
+
+		<form class="mui-input-group">
+			<div class="mui-input-row">
+				<label></label>
+				<input id='account' type="text" class="mui-input-clear mui-input" placeholder="用户名/邮箱/手机号">
+			</div>
+			<div class="mui-input-row">
+				<label></label>
+				<input id='password' type="password" class="mui-input-clear mui-input" placeholder="密码">
+			</div>
+		</form>
+		<div class="mui-content-padded">
+		<a href="./index.html" title="">			
+			<button id="enter" class="mui-btn mui-btn-block mui-btn-primary">登录</button>
+		</a>
+			<p id="contentShow"></p>
+		</div>
+
+		<div class="mui-content-padded">
+			<p style="text-align: center;">其他登录方式:</p>
+			<ul class="mui-table-view mui-grid-view item-icon">
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="#">
+						<img src="img/QQ.png" />
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="#">
+						<img src="img/weixin.png" />
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="#">
+						<img src="img/weibo.png" />
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+					<a href="#">
+						<img src="img/baidu.png" />
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<p class="mui-footer-enter">
+			<a href="#"><span id="mui-pro">忘记密码</span></a>
+			<a href="register.html"><span id="mui-logon">新用户注册</span></a>
+		</p>
+
+	</div>		
+</body>
+<script type="text/javascript" src="js/ajax.js"></script>
+<script type="text/javascript" src="js/enter.js"></script>
+</html>

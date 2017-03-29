@@ -1,0 +1,83 @@
+*{margin: 0;padding: 0;}
+			.area {
+				margin: 20px auto 0px auto;
+			}
+			body{
+				background: #ffffff;
+				}
+			.mui-content{background: #ffffff;}
+			.mui-input-group:first-child {
+				margin-top: -94px;
+			}
+			.mui-input-group label {
+				width: 22%;
+			}
+			.mui-input-row{
+				position: relative;
+				top: 10px;
+			}
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+				position: absolute;
+				left: 12px;
+			}
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			.mui-content-padded {
+				margin-top: 25px;
+			}
+			.mui-btn {
+				padding: 10px;
+			}
+			#enter{
+				border-radius: 30px;
+				background: rgb(71,56,43);
+				border: 1px solid rgb(71,56,43) ;
+				margin-top: 10px;
+				margin-top: 80%;
+			}
+			#register{
+				background: rgb(71,56,43);
+				color: #ffffff;
+				width: 100%;
+			}
+			#register span{
+				margin-right:13% ;
+			}
+			#return{
+				background: rgb(71,56,43);
+				color: #FFFFFF;
+				
+			}
+			#header-img{
+				margin:30px auto;
+				border-radius: 15px;		
+			}
+			#footer p{
+				color: #424242;
+				font-size: 15px;
+				margin-left: 40%;
+				margin-top: 30px;
+			}
+			li{
+			list-style: none;	
+			}
+			  .left{
+				margin-left: 20px;
+			}
+            #indent{
+            	margin-top: 60px;
+            }
+            .mui-right{
+            	float: right;
+            }
+
+
+
+
+
+

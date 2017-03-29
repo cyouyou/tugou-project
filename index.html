@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>兔购网</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--标准mui.css-->
+	<link rel="stylesheet" href="./css/mui.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/icons-extra.css"/>
+	<link href="./css/mui.picker.css" rel="stylesheet" />
+	<link href="./css/mui.poppicker.css" rel="stylesheet" />
+	<!--App自定义的css-->
+	<link rel="stylesheet" type="text/css" href="./css/app.css"/>
+	<script src="./js/vue.js"></script>
+	<script src="./js/vue-resource.js"></script>
+	<script src="./js/selectVue.js"></script>
+	<style type="text/css" media="screen">
+		[v-cloak]{
+			display: none;
+		}
+		#tabbar a{
+			color: rgb(165,165,165);
+		}
+		.icon-buy img{
+			margin-right: 20px;
+		}
+		#enter button{
+			color: rgb(187,166,123);
+			border: 2px solid rgb(187,166,123);
+			font-size: 14px;
+			border-radius: 5px;
+			width: 20%;
+			margin: 20px auto;
+		}
+	</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav" id="header" v-show="cutNum==1">
+		<div class="mui-row">
+			<div class="mui-col-sm-2 mui-col-xs-2" v-show="!showbg">
+				<a class="mui-icon mui-icon-left-nav mui-pull-left" style="color: white" @tap="hideSearch"></a>
+			</div>
+			<div class="mui-col-sm-2 mui-col-xs-2 header-text" v-show="showbg">
+				<span id='showCityPicker'>北京市</span>
+				<div id='cityResult' class="ui-alert"></div>
+			</div>
+			<div class="mui-col-sm-8 mui-col-xs-8">
+				<div class="mui-input-row mui-search">
+					<input type="search" class="mui-input-clear" v-model="wd" @input="showList" @change="hideList" placeholder="搜索食材、菜品" @focus="getData($event)">
+				</div>
+			</div>
+			<div class="mui-col-sm-2 mui-col-xs-2 header-text">
+				<span class="mui-icon-extra mui-icon-extra-notice"></span>
+			</div>
+		</div>
+	</header>
+
+	<header class="mui-bar mui-bar-nav" v-show="selectbool">
+		<a class="mui-icon mui-icon-left-nav mui-pull-left mui-tab-item" href="#tabbar-with-contact" style="color: white" @tap="myselectFn"></a>
+		<h1 class="mui-title" style="color: white">我的选菜</h1>
+	</header>
+
+	<header class="mui-bar mui-bar-nav" v-show="cutNum==2">		
+		<h1 class="mui-title" style="color: white;">
+			<div>
+				<div id="veg-nav" style="width:120px;height:30px;line-height:30px;background: url(img/nav2.png);background-size: 100% 100%; margin: 9px auto;font-size: 14px;font-weight: normal;">
+					<div style="display: inline-block;width: 50%;" onclick="cutBg('left')">单品</div>
+					<div style="display: inline-block;width: 50%;" onclick="cutBg('right')">菜品</div>
+				</div>
+			</div>
+		</h1>
+	</header>
+
+	<header class="mui-bar mui-bar-nav" v-show="cutNum==3">	
+		<h1 class="mui-title" style="color: white">选菜</h1>
+	</header>
+
+	<header class="mui-bar mui-bar-nav" v-show="cutNum==4">		
+		<h1 class="mui-title" style="color: white">
+			<div>
+				<div id="find-nav" style="width:120px;height:30px;line-height:30px;background: url(img/nav2.png);background-size: 100% 100%; margin: 9px auto;font-size: 14px;font-weight: normal;">
+					<div style="display: inline-block;width: 50%;" @tap="findFn1()" onclick="findBg('left')">圈子</div>
+					<div style="display: inline-block;width: 50%;" @tap="findFn2()" onclick="findBg('right')">视频</div>
+				</div>
+			</div>
+		</h1>
+	</header>
+
+	<!-- 搜索列表 -->
+	<div style="margin-top: 45px;" v-show="!showbg" id="search-list">
+		<ul class="mui-table-view" v-show="showlist">
+			<li v-cloak class="mui-table-view-cell" v-for="item in searchListArr|filterBy wd" track-by="$index">
+				<a class="mui-navigate-right" href="./components/comDetails.html?id={{item.id}}">{{item.name}}</a>
+			</li>
+		</ul>
+	</div>
+	<!-- 底部导航 -->
+	<nav class="mui-bar mui-bar-tab" id="bar-tab" v-show="showbg">
+		<a class="mui-tab-item mui-active" href="#tabbar" @tap="homeFn()">
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">主页</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-chat" @tap="shopFn()">
+			<span class="mui-icon mui-icon-flag"></span>
+			<span class="mui-tab-label">商城</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-contact" @tap="selectVegFn()">
+			<span class="mui-icon mui-icon-search"></span>
+			<span class="mui-tab-label">选菜</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-map" @tap="findFn()">
+			<span class="mui-icon mui-icon-eye"></span>
+			<span class="mui-tab-label">发现</span>
+		</a>
+		<a class="mui-tab-item" href="#tabbar-with-mine" @tap="myFn()">
+			<span class="mui-icon mui-icon-person-filled"></span>
+			<span class="mui-tab-label">我的</span>
+		</a>
+	</nav>
+	<div class="mui-content" v-show="showbg">
+		<!-- 图片轮播 -->
+		<div id="tabbar" class="mui-control-content mui-active">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="./components/comDetails.html?id=4" target="_self">
+							<img :src="picDataArr[3].picSrc">
+							<p class="mui-slider-title">静静看这世界</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="./components/comDetails.html?id=1" target="_self">
+							<img :src="picDataArr[0].picSrc">
+							<p class="mui-slider-title">幸福就是可以一起</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="./components/comDetails.html?id=2" target="_self">
+							<img :src="picDataArr[1].picSrc">
+							<p class="mui-slider-title">想要一间这样的木屋，静静的喝咖啡</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="./components/comDetails.html?id=3" target="_self">
+							<img :src="picDataArr[2].picSrc">
+							<p class="mui-slider-title">Color of SIP CBD</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="./components/comDetails.html?id=4" target="_self">
+							<img :src="picDataArr[3].picSrc">
+							<p class="mui-slider-title">静静看这世界</p>
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="./components/comDetails.html?id=1" target="_self">
+							<img :src="picDataArr[0].picSrc">
+							<p class="mui-slider-title">幸福就是可以一起吃饭</p>
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator mui-text-right">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<!-- 商品图片 懒加载效果 -->
+			<ul class="mui-table-view" id="table-lazy" v-cloak>
+				<li class="mui-table-view-cell mui-media">
+					<p>兔抢购</p>
+					<div class="lazy-pic lpl">
+						<a href="./components/comDetails.html?id=5" target="_self">
+							<ul>
+								<li>{{picDataArr[4].name}}</li>
+								<li>{{picDataArr[4].price}}</li>
+								<li><img :src="picDataArr[4].picSrc"></li>
+							</ul>
+						</a>
+					</div>
+					<div class="lazy-pic lpr">
+						<a href="./components/comDetails.html?id=6" target="_self">
+							<ul>
+								<li>{{picDataArr[5].name}}</li>
+								<li>{{picDataArr[5].price}}</li>
+								<li><img :src="picDataArr[5].picSrc"></li>
+							</ul>
+						</a>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media more-pic">
+					<p>美食精选</p>
+					<div class="more-wrap">
+						<div class="more-left">
+							<a href="./components/comDetails.html?id=7" target="_self">
+								<img :src="picDataArr[6].picSrc">
+							</a>
+						</div>
+						<div class="more-right">
+							<div class="more-up">
+								<a href="./components/comDetails.html?id=8" target="_self">
+									<img :src="picDataArr[7].picSrc">
+								</a>
+							</div>
+							<div class="more-down">
+								<div class="inner-left">
+									<a href="./components/comDetails.html?id=9" target="_self">
+										<img :src="picDataArr[8].picSrc">
+									</a>
+								</div>
+								<div class="inner-right">
+									<a href="./components/comDetails.html?id=10" target="_self">
+										<img :src="picDataArr[9].picSrc">
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media lazy-list">
+					<ul id="list" class="mui-table-view mui-table-view-chevron">
+
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<!-- 商城 -->
+		<div id="tabbar-with-chat" class="mui-control-content">
+			<ul id="shop-list" class="mui-table-view mui-table-view-chevron">
+
+			</ul>
+		</div>
+
+		<!-- 选菜 -->
+		<div id="tabbar-with-contact" class="mui-control-content">
+			<div class="check-food">
+				<span>{{myFoodArr.length}}种可做菜品</span>
+				<a class="mui-tab-item" href="#my-select">
+					<button type="button" class="mui-btn mui-btn-success" @tap="myselectFn">查看</button>
+				</a>
+			</div>
+			<div class="select-list">
+				<div class="select-veget" v-for="item in myFoodArr">
+					<div @tap="deleteSelect($index)">
+						<img :src="item">
+					</div>
+				</div>
+			</div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<div class="mui-row">
+						<div class="mui-col-sm-4 mui-col-xs-4" v-for="item in selectImgArr">
+							<div class="content-card" @tap="deleteCard($index)">
+								<img :src="item">
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<!-- 我的选择 -->
+		<div id="my-select" class="mui-control-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<div class="mui-row">
+						<div class="mui-col-sm-4 mui-col-xs-4" v-for="item in myFoodArr">
+							<div class="content-card" @tap="deleteSelect($index)">
+								<img :src="item">
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<!-- 发现 -->
+		<div id="tabbar-with-map" class="mui-control-content">
+			<ul id="find-list" class="mui-table-view" v-show="findNum==1">
+			</ul>
+			<div v-show="findNum==2">
+				<ul class="video">
+					<li>
+						<video src="img/1.mp4" controls="controls" poster="img/video3.jpeg" loop="loop" x-webkit-airplay="true" webkit-playsinline="true" class="cideoPlay1" >您的浏览器无法显示播放器</video>
+						<p>
+							<span>豆芽健康素 养生界的“四大天王”</span>
+							<p>身体：减肥“正当时</p>
+						</p>
+					</li>
+					<li>
+						<video src="img/1.mp4" poster="img/video2.jpeg"  controls="controls" loop="loop" x-webkit-airplay="true" webkit-playsinline="true">您的浏览器无法显示播放器</video>
+						<p>
+							<span>豆芽健康素 养生界的“四大天王”</span>
+							<p>身体：减肥“正当时</p>
+						</p>
+					</li>
+					<li>
+						<video src="img/1.mp4" poster="img/video1.jpg"  controls="controls" loop="loop" x-webkit-airplay="true" webkit-playsinline="true" >您的浏览器无法显示播放器</video>
+						<p>
+							<span>豆芽健康素 养生界的“四大天王”</span>
+							<p>身体：减肥“正当时</p>
+						</p>
+					</li>			
+				</ul>
+			</div>
+		</div>
+
+		<!-- 我的 -->
+		<div id="tabbar-with-mine" class="mui-control-content" style="margin-top: -46px">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" id="tabbar-bg">
+					<div v-show="false">
+						<img src="img/head.png">
+						<p>宝宝别闹</p>
+						<div class="head-up">
+							<div>关注<strong style="color: #71f704">6</strong></div>
+							<div>粉丝<strong style="color: #ff4e00">17</strong></div>
+						</div>
+						<div class="head-down">
+							<div>收藏<strong style="color: #00deff">5</strong></div>
+							<div>消息<strong style="color: #c600ff">39</strong></div>
+							<div>可用积分<strong style="color: #fc0320">15</strong></div>
+						</div>
+					</div>	
+					<div v-show="true" id="enter">
+						<div>
+							<img src="img/camera.png">
+						</div>	
+						<a href="./enter.html">					
+							<button type="button"  class="mui-btn mui-btn-outlined mui-btn">登录</button>
+						</a>
+					</div>				
+				</li>
+				<li class="mui-table-view-cell item-border">
+					全部订单
+					<ul class="mui-table-view mui-grid-view item-icon">
+						<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+							<a href="#">
+								<img src="img/payment.png" alt="">
+								<span class="mui-badge mui-badge-danger" style="margin-top: -18px;">3</span>
+								<div class="mui-media-body">待付款</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+							<a href="#">
+								<img src="img/send.png" alt="">
+								<span class="mui-badge mui-badge-danger" style="margin-top: -18px;">3</span>
+								<div class="mui-media-body">待发货</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+							<a href="#">
+								<img src="img/received.png" alt="">
+								<span class="mui-badge mui-badge-danger" style="margin-top: -18px;">3</span>
+								<div class="mui-media-body">待收货</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-3 mui-col-sm-3">
+							<a href="#">
+								<img src="img/pingjia.png" alt="">
+								<span class="mui-badge mui-badge-danger" style="margin-top: -18px;">3</span>
+								<div class="mui-media-body">待评价</div>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="mui-table-view-cell icon-buy">
+					<a href="./shopping.html" title=""><img src="img/car.png" width="20">我的购物车</a>
+				</li>
+				<li class="mui-table-view-cell icon-buy">
+					<img src="img/member.png" width="20">我的会员
+				</li>
+				<li class="mui-table-view-cell icon-buy">
+					<img src="img/phone.png" width="20">客服热线
+				</li>
+				<li class="mui-table-view-cell icon-buy">
+					<img src="img/set.png" width="20">我的上传
+				</li>
+				<li class="mui-table-view-cell icon-buy">
+					<a href="./get.html" title=""><img src="img/upload.png" width="20">我的设置</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+<script src="./js/mui.min.js"></script>
+<script src="./js/mui.picker.js"></script>
+<script src="./js/mui.poppicker.js"></script>
+<script src="./js/city.data.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/picker.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/mui.lazyload.js"></script>
+<script src="./js/mui.lazyload.img.js"></script>
+<script src="./js/app.js"></script>
+</html>

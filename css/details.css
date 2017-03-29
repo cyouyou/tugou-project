@@ -1,0 +1,119 @@
+.mui-bar-nav{
+  background-color: rgb(69,56,44);
+}
+.mui-bar-nav a{
+  color: white;
+}
+.mui-bar-nav .mui-title{
+  color: white;
+  font-weight: normal;
+}
+.mui-content .content-pic{
+  /*vm=屏幕宽度*60/100*/
+  height: 60vw;
+}
+.mui-content .content-pic img{
+  width: 100%;
+  height: 100%;
+}
+.mui-content .content-intro{
+  padding: 20px;
+}
+.content-intro .content-title span:nth-child(2){
+  color: gray;
+  float: right;
+}
+.content-intro .content-msg span:nth-child(2){
+  float: right;
+}
+.content-intro .content-title{
+  color: black;
+  font-size: 5vw;
+}
+.content-intro .content-msg{
+  font-size: 3vw;
+}
+.content-title span:nth-child(2) i{
+  color: rgb(107, 181, 65);
+}
+.detail-menu .detail-menu-up{
+  display: block;
+  height: 15vw;
+}
+.detail-menu .detail-menu-up div{
+  width: 120px;
+  height: 30px;
+  color: white;
+  margin-top: 10px;
+  box-shadow: 1px 1px 5px gray;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 0 15px 15px 0;
+  background: rgb(107, 181, 65);
+}
+.detail-menu .detail-menu-down img{
+  height: 30vw;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px gray;
+}
+.detail-menu .mui-table-view-cell>a:not(.mui-btn){
+  padding: 0;
+}
+.mui-content .content-intro{
+  background-color: white;
+}
+.mui-content .mui-table-view:after{
+  height: 0;
+}
+.mui-content .mui-table-view:before{
+  height: 0;
+}
+.mui-table-view-cell:after{
+  height: 0;
+}
+.mui-table-view-cell>a:not(.mui-btn){
+  margin: 0;
+}
+.mui-table-view-cell{
+  padding: 10px 0;
+  overflow: visible;
+}
+.mui-table-view-cell.mui-active{
+  background-color: white;
+}
+.buy-food{
+  height:50px;
+  width:100%;
+  background:black;
+  position:fixed;
+  bottom:0;
+}
+.buy-food div:nth-child(1){
+  width: 50%;
+  height: 100%;
+  float: left;
+  background-color: rgb(250, 169, 71);
+}
+.buy-food div:nth-child(2){
+  width: 50%;
+  height: 100%;
+  float: right;
+  background-color: rgb(251, 97, 59);
+}
+.buy-food{
+  color: white;
+  line-height: 50px;
+  text-align: center;
+}
+.detail-menu .detail-strategy-up{
+  font-size: 14px;
+  color: rgb(126, 127, 128);
+  text-align: center;
+}
+.detail-strategy-up p{
+  font-size: 16px;
+  padding: 10px;
+}
+.detail-strategy-up .mui-row div{
+  padding: 10px;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+    <link rel="stylesheet" type="text/css" href="../css/details.css" />
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/vue.js"></script>
+		<script src="../js/vue-resource.js"></script>
+    <script src="../js/skipData.js"></script>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">菜品详情</h1>
+		</header>
+		<div class="mui-content" style="padding-bottom: 50px;">
+      <div class="content-header">
+        <div class="content-pic">
+          <img :src="detailPic">
+        </div>
+        <div class="content-intro">
+          <p class="content-title">
+            <span>{{detailMsg.name}}</span>
+            <span>
+              <i class="mui-icon-extra mui-icon-extra-heart-filled" v-for="item in starArr" track-by="$index"></i>
+              <i class="mui-icon-extra mui-icon-extra-heart" v-for="item in starArr1" track-by="$index"></i>
+            </span>
+          </p>
+          <p class="content-msg">
+            <span>酱香口味&nbsp&nbsp&nbsp5分钟{{detailMsg.price}}</span>
+            <span>{{detailMsg.collect}}</span>
+          </p>
+        </div>
+      </div>
+
+      <ul class="mui-table-view detail-menu">
+					<li class="mui-table-view-cell mui-collapse">
+            <a class="detail-menu-up" href="#">
+              <div>菜单</div>
+            </a>
+            <div class="mui-collapse-content detail-menu-down">
+              <ul class="mui-table-view">
+      					<li class="mui-table-view-cell mui-media">
+      						<div class="mui-row">
+      							<div class="mui-col-sm-4 mui-col-xs-4">
+      								<div class="content-card">
+      									<img src="../img/select01.png">
+      								</div>
+      							</div>
+                    <div class="mui-col-sm-4 mui-col-xs-4">
+      								<div class="content-card">
+      									<img src="../img/select02.png">
+      								</div>
+      							</div>
+                    <div class="mui-col-sm-4 mui-col-xs-4">
+      								<div class="content-card">
+      									<img src="../img/select03.png">
+      								</div>
+      							</div>
+      						</div>
+      					</li>
+      				</ul>
+            </div>
+					</li>
+          <li class="mui-table-view-cell mui-collapse">
+            <a class="detail-menu-up" href="#">
+              <div>攻略</div>
+            </a>
+            <div class="detail-strategy-up mui-collapse-content">
+              <p>主料</p>
+              <div class="mui-row">
+                <div class="mui-col-sm-6 mui-col-xs-6">杏鲍菇（2个）</div>
+                <div class="mui-col-sm-6 mui-col-xs-6"></div>
+              </div>
+              <p>辅料</p>
+              <div class="mui-row">
+                <div class="mui-col-sm-6 mui-col-xs-6">鲜葱（1颗）</div>
+                <div class="mui-col-sm-6 mui-col-xs-6">山椒酱（45毫克）</div>
+                <div class="mui-col-sm-6 mui-col-xs-6">玉米油（2.5毫升）</div>
+              </div>
+            </div>
+					</li>
+        </ul>
+        <div class="buy-food">
+          <div>加入购物车</div>
+          <div>立即购买</div>
+        </div>
+		</div>
+	</body>
+</html>
